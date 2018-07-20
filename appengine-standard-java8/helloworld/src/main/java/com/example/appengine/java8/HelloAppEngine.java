@@ -17,7 +17,9 @@
 package com.example.appengine.java8;
 
 // [START example]
+import com.google.appengine.api.search.query.QueryTreeBuilder;
 import com.google.appengine.api.utils.SystemProperty;
+import com.google.appengine.repackaged.org.antlr.runtime.RecognitionException;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -37,9 +39,11 @@ public class HelloAppEngine extends HttpServlet {
     Properties properties = System.getProperties();
 
     response.setContentType("text/plain");
-    response.getWriter().println("Hello App Engine - Standard using "
-            + SystemProperty.version.get() + " Java "
-            + properties.get("java.specification.version"));
+	  try {
+		  response.getWriter().println(new QueryTreeBuilder().parse("hello world").toStringTree());
+	  } catch (Throwable e) {
+		  e.printStackTrace(response.getWriter());
+	  }
   }
 
   public static String getInfo() {

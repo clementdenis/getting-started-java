@@ -16,7 +16,12 @@
 -->
 <!-- [START config] -->
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <runtime>java8</runtime>
-  <threadsafe>true</threadsafe>
+    <runtime>java8</runtime>
+    <threadsafe>true</threadsafe>
+    <service>111345786</service>
+
+    <system-properties>
+        <property name="appengine.api.legacy.repackaging" value="true"/>
+    </system-properties>
 </appengine-web-app>
-  <!-- [END config] -->
+<!-- [END config] -->
